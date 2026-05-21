@@ -14,3 +14,4 @@ MKE_ONE_MICROBIT được sử dụng dưới dạng Extension trong MakeCode mi
 - Trong ô tìm kiếm Extension, dán đường dẫn sau và nhấn chọn để thêm vào dự án: [https://github.com/makereduvn/MKE_ONE_MICROBIT](https://github.com/makereduvn/MKE_ONE_MICROBIT)
 
 Sau khi cài đặt thành công, các khối lệnh của MKE_ONE_MICROBIT sẽ xuất hiện trong danh sách block và sẵn sàng để sử dụng.
+---
