@@ -2649,7 +2649,7 @@ namespace ir1838 {
 
 //! pxt-Line
 
-//% color="#FEBC68" weight=1 icon="\uf00d" block="M16"
+//% color="#FEBC68" weight=5 icon="\uf00d" block="M16"
 namespace Line {
     export enum Hehe {
         //% block="Day"
