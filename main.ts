@@ -2649,7 +2649,7 @@ namespace ir1838 {
 
 //! pxt-i2cLineFollower
 
-//% color="#41C0B5" weight=5 icon="\uf2c9" block="M16"
+//% color="#FEBC68" weight=1 icon="\uf00d" block="M16"
 namespace i2cLineFollower{
 
 }
