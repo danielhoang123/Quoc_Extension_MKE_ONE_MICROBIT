@@ -2217,7 +2217,7 @@ namespace background {
 
 //! pxt-ir1838
 
-//% color="#FEBC68" weight=1 icon="\uf00d" block="M14"
+//% color="#FEBC68" weight=2 icon="\uf00d" block="M14"
 //% groups="['Get Info Infrared (Data)', 'Get Info Infrared (Text)']"
 namespace ir1838 {
     export enum ValueIR {
@@ -2647,7 +2647,7 @@ namespace ir1838 {
     }
 }
 
-//% color="#FEBC68" weight=4 icon="\uf26c" block="M16"
+//% color="#FEBC68" weight=1 icon="\uf06e" block="M16"
 namespace MySensor {
 
     const SENSOR_ADDR = 0x2A
@@ -2660,7 +2660,7 @@ namespace MySensor {
     }
 
     /**
-     * Read sensor 1
+     * Read the P1 Sensor value 0 - 255
      */
     //% block="P1 Value"
     export function eye1(): string {
@@ -2668,7 +2668,7 @@ namespace MySensor {
     }
 
     /**
-     * Read sensor 2
+     * Read the P2 Sensor value 0 - 255
      */
     //% block="P2 Value"
     export function eye2(): string {
@@ -2676,7 +2676,7 @@ namespace MySensor {
     }
 
     /**
-     * Read sensor 3
+     * Read the P3 Sensor value 0 - 255
      */
     //% block="P3 Value"
     export function eye3(): string {
@@ -2684,7 +2684,7 @@ namespace MySensor {
     }
 
     /**
-     * Read sensor 4
+     * Read the P4 Sensor value 0 - 255
      */
     //% block="P4 Value"
     export function eye4(): string {
@@ -2692,7 +2692,7 @@ namespace MySensor {
     }
 
     /**
-     * Read sensor 5
+     * Read the P5 Sensor value 0 - 255
      */
     //% block="P5 Value"
     export function eye5(): string {
