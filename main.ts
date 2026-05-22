@@ -384,7 +384,7 @@ namespace dht11 {
 
 //! pxt-ds18b20
 
-//% color="#41C0B5" weight=5 icon="\uf2c9" block="S15"
+//% color="#41C0B5" weight=6 icon="\uf2c9" block="S15"
 namespace ds18b20 {
     export enum TemperatureType {
         //% block="°C"
@@ -2647,7 +2647,7 @@ namespace ir1838 {
     }
 }
 
-//% color="#FEBC68" weight=1 icon="\uf06e" block="M16"
+//% color="#41C0B5" weight=5 icon="\uf06e" block="S16"
 namespace LineTracker {
 
     const SENSOR_ADDR = 0x2A
