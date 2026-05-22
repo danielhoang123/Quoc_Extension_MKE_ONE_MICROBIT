@@ -2648,7 +2648,7 @@ namespace ir1838 {
 }
 
 //% color="#FEBC68" weight=1 icon="\uf06e" block="M16"
-namespace MySensor {
+namespace LineTracker {
 
     const SENSOR_ADDR = 0x2A
 
