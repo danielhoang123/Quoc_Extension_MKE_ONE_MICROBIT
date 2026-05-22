@@ -2647,16 +2647,55 @@ namespace ir1838 {
     }
 }
 
-//! pxt-Line
+//% color="#FEBC68" weight=4 icon="\uf26c" block="M16"
+namespace MySensor {
 
-//% color="#FEBC68" weight=5 icon="\uf00d" block="M16"
-namespace Line {
-    export enum Hehe {
-        //% block="Day"
-        Day1 = 0,
-        //% block="Month"
-        Month2 = 1,
-        //% block="Year"
-        Year3 = 2
+    const SENSOR_ADDR = 0x2A
+
+    /**
+     * Read all sensor data
+     */
+    function readBuffer(): Buffer {
+        return pins.i2cReadBuffer(SENSOR_ADDR, 5)
+    }
+
+    /**
+     * Read sensor 1
+     */
+    //% block="P1 Value"
+    export function eye1(): string {
+        return convertToText(readBuffer()[0])
+    }
+
+    /**
+     * Read sensor 2
+     */
+    //% block="P2 Value"
+    export function eye2(): string {
+        return convertToText(readBuffer()[1])
+    }
+
+    /**
+     * Read sensor 3
+     */
+    //% block="P3 Value"
+    export function eye3(): string {
+        return convertToText(readBuffer()[2])
+    }
+
+    /**
+     * Read sensor 4
+     */
+    //% block="P4 Value"
+    export function eye4(): string {
+        return convertToText(readBuffer()[3])
+    }
+
+    /**
+     * Read sensor 5
+     */
+    //% block="P5 Value"
+    export function eye5(): string {
+        return convertToText(readBuffer()[4])
     }
 }
