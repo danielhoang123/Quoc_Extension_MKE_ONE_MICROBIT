@@ -2712,7 +2712,7 @@ namespace LineTracker {
      */
     //% block="P2 Detect Line"
     export function eye2_detect(): boolean {
-        return readBuffer()[0] < 200
+        return readBuffer()[1] < 200
     }
 
     /**
@@ -2720,7 +2720,7 @@ namespace LineTracker {
      */
     //% block="P3 Detect Line"
     export function eye3_detect(): boolean {
-        return readBuffer()[0] < 200
+        return readBuffer()[2] < 200
     }
 
     /**
@@ -2728,7 +2728,7 @@ namespace LineTracker {
      */
     //% block="P4 Detect Line"
     export function eye4_detect(): boolean {
-        return readBuffer()[0] < 200
+        return readBuffer()[3] < 200
     }
 
     /**
@@ -2737,6 +2737,6 @@ namespace LineTracker {
 
     //% block="P5 Detect Line"
     export function eye5_detect(): boolean {
-        return readBuffer()[0] < 200
+        return readBuffer()[4] < 200
     }
 }
