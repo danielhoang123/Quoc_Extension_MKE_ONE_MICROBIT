@@ -2698,4 +2698,45 @@ namespace LineTracker {
     export function eye5(): string {
         return convertToText(readBuffer()[4])
     }
+
+    /**
+     * Read the P1 Sensor true or false
+     */
+    //% block="P1 Detect Line"
+    export function eye1_detect(): boolean {
+        return readBuffer()[0] < 200
+    }
+
+    /**
+     * Read the P2 Sensor true or false
+     */
+    //% block="P2 Detect Line"
+    export function eye2_detect(): boolean {
+        return readBuffer()[0] < 200
+    }
+
+    /**
+     * Read the P3 Sensor true or false
+     */
+    //% block="P3 Detect Line"
+    export function eye3_detect(): boolean {
+        return readBuffer()[0] < 200
+    }
+
+    /**
+     * Read the P4 Sensor true or false
+     */
+    //% block="P4 Detect Line"
+    export function eye4_detect(): boolean {
+        return readBuffer()[0] < 200
+    }
+
+    /**
+     * Read the P5 Sensor true or false
+     */
+
+    //% block="P5 Detect Line"
+    export function eye5_detect(): boolean {
+        return readBuffer()[0] < 200
+    }
 }
