@@ -577,7 +577,7 @@ namespace ds18b20 {
         init(pin);          // Reset Pulses, then Presence Pulses
         write(pin, 0xCC);   // ROM Commands       : Skip Rom [CCh]
         write(pin, 0x44);   // Function Commands  : Convert T [44h]
-        
+
         /* The 1-Wire bus must be switched to the strong pullup within 10µs (max)
         ** After a Convert T [44h] or Copy Scratchpad [48h] command is issued
         ** And the bus must be held high by the pullup for the duration of the conversion (tCONV) or data transfer (tWR = 10ms)
@@ -608,14 +608,14 @@ namespace ds18b20 {
         //     temperature = _lastTemp[sig];
         // }
         // _lastTemp[sig] = temperature;
-        
+
         if (temperature > 130) {
             temperature = lastV; // Sử dụng giá trị an toàn đã check
         }
         _lastTemp[index] = temperature;
-        
+
         let value;
-        
+
         /* Get value temperature */
         switch (unit) {
             case TemperatureType.Celsius: value = _lastTemp[sig]; break;
@@ -2648,21 +2648,25 @@ namespace ir1838 {
 }
 
 //% color="#41C0B5" weight=5 icon="\uf06e" block="S16"
+//% groups="['Digital Value', 'Analog Value']"
 namespace LineTracker {
 
     const SENSOR_ADDR = 0x2A
 
-    /**
-     * Read all sensor data
-     */
     function readBuffer(): Buffer {
         return pins.i2cReadBuffer(SENSOR_ADDR, 5)
     }
 
     /**
-     * Read the P1 Sensor value 0 - 255
+     * Get P1 value from I2C Line Tracker
+     * @param calendar select get data Day, Month or Year
      */
-    //% block="P1 Value"
+    //% block="S16 I2C Line Tracker \\| Get $P1_Value"
+    //% anaValue1.defl=convertToText(readBuffer()[0])
+    //% inlineInputMode=inline
+    //% weight=2
+    //% group="Analog Value"
+
     export function eye1(): string {
         return convertToText(readBuffer()[0])
     }
