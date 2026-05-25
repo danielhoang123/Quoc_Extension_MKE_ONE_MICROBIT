@@ -15,3 +15,19 @@ MKE_ONE_MICROBIT được sử dụng dưới dạng Extension trong MakeCode mi
 
 Sau khi cài đặt thành công, các khối lệnh của MKE_ONE_MICROBIT sẽ xuất hiện trong danh sách block và sẵn sàng để sử dụng.
 ---
+
+# Line Tracker Extension
+
+Read 5 line tracking sensors via I2C.
+
+## Example
+
+```blocks
+basic.forever(function () {
+    if (LineTracker.eye3()) {
+        basic.showIcon(IconNames.Yes)
+    } else {
+        basic.showIcon(IconNames.No)
+    }
+})
+```
