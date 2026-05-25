@@ -2664,7 +2664,7 @@ namespace LineTracker {
     //% block="S16 I2C Line Tracker \\| Get P1 Analog Value $P1_Value"
     //% anaValue1.defl=convertToText(readBuffer()[0])
     //% inlineInputMode=inline
-    //% weight=2
+    //% weight=11
     //% group="Analog Value"
 
     export function eye1(): string {
