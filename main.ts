@@ -2651,6 +2651,19 @@ namespace ir1838 {
 //% groups="['Digital Value', 'Analog Value']"
 namespace LineTracker {
 
+    export enum SensorPort {
+        //% block="P1"
+        P1 = 0,
+        //% block="P2"
+        P2 = 1,
+        //% block="P3"
+        P3 = 2,
+        //% block="P4"
+        P4 = 3,
+        //% block="P5"
+        P5 = 4
+    }
+
     const SENSOR_ADDR = 0x2A
 
     function readBuffer(): Buffer {
@@ -2658,89 +2671,28 @@ namespace LineTracker {
     }
 
     /**
-     * Get P1 value from I2C Line Tracker
-     * @param Get P1 Analog Value from 0 to 255
+     * Read analog value from sensor
      */
-    //% block="S16 I2C Line Tracker \\| Get P1 Analog Value $P1_Value"
-    //% anaValue1.defl=convertToText(readBuffer()[0])
-    //% inlineInputMode=inline
-    //% weight=11
+    //% block="read analog value at $port"
+    //% weight=10
     //% group="Analog Value"
+    export function readAnalogValue(port: SensorPort): number {
 
-    export function eye1(): string {
-        return convertToText(readBuffer()[0])
+        let buf = readBuffer()
+
+        return buf[port]
     }
 
     /**
-     * Read the P2 Sensor value 0 - 255
+     * Detect line
      */
-    //% block="P2 Value"
-    export function eye2(): string {
-        return convertToText(readBuffer()[1])
-    }
+    //% block="detect line at $port"
+    //% weight=9
+    //% group="Digital Value"
+    export function detectLine(port: SensorPort): boolean {
 
-    /**
-     * Read the P3 Sensor value 0 - 255
-     */
-    //% block="P3 Value"
-    export function eye3(): string {
-        return convertToText(readBuffer()[2])
-    }
+        let buf = readBuffer()
 
-    /**
-     * Read the P4 Sensor value 0 - 255
-     */
-    //% block="P4 Value"
-    export function eye4(): string {
-        return convertToText(readBuffer()[3])
-    }
-
-    /**
-     * Read the P5 Sensor value 0 - 255
-     */
-    //% block="P5 Value"
-    export function eye5(): string {
-        return convertToText(readBuffer()[4])
-    }
-
-    /**
-     * Read the P1 Sensor true or false
-     */
-    //% block="P1 Detect Line"
-    export function eye1_detect(): boolean {
-        return readBuffer()[0] < 200
-    }
-
-    /**
-     * Read the P2 Sensor true or false
-     */
-    //% block="P2 Detect Line"
-    export function eye2_detect(): boolean {
-        return readBuffer()[1] < 200
-    }
-
-    /**
-     * Read the P3 Sensor true or false
-     */
-    //% block="P3 Detect Line"
-    export function eye3_detect(): boolean {
-        return readBuffer()[2] < 200
-    }
-
-    /**
-     * Read the P4 Sensor true or false
-     */
-    //% block="P4 Detect Line"
-    export function eye4_detect(): boolean {
-        return readBuffer()[3] < 200
-    }
-
-    /**
-     * Read the P5 Sensor true or false
-     */
-
-    //% block="P5 Detect Line"
-    export function eye5_detect(): boolean {
-        return readBuffer()[4] < 200
+        return buf[port] < 200
     }
 }
