@@ -2659,9 +2659,9 @@ namespace LineTracker {
 
     /**
      * Get P1 value from I2C Line Tracker
-     * @param calendar select get data Day, Month or Year
+     * @param Get P1 Analog Value from 0 to 255
      */
-    //% block="S16 I2C Line Tracker \\| Get $P1_Value"
+    //% block="S16 I2C Line Tracker \\| Get P1 Analog Value $P1_Value"
     //% anaValue1.defl=convertToText(readBuffer()[0])
     //% inlineInputMode=inline
     //% weight=2
