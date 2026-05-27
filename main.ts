@@ -2648,7 +2648,7 @@ namespace ir1838 {
 }
 
 //% color="#41C0B5" weight=5 icon="\uf06e" block="S16"
-//% groups="['Digital Value', 'Analog Value']"
+//% groups="['Setup', 'Digital Value', 'Analog Value']"
 namespace LineTracker {
 
     export enum SensorPort {
@@ -2664,21 +2664,63 @@ namespace LineTracker {
         P5 = 4
     }
 
-    const SENSOR_ADDR = 0x2A
+    export enum I2CAddress {
+        //% block="0x2A"
+        ADDR_2A = 0x2A,
 
-    function readBuffer(): Buffer {
-        return pins.i2cReadBuffer(SENSOR_ADDR, 5)
+        //% block="0x2B"
+        ADDR_2B = 0x2B,
+
+        //% block="0x2C"
+        ADDR_2C = 0x2C,
+
+        //% block="0x2D"
+        ADDR_2D = 0x2D,
+
+        //% block="0x2E"
+        ADDR_2E = 0x2E
+    }
+
+    let currentAddress = I2CAddress.ADDR_2A
+
+    function readBuffer(address: I2CAddress): Buffer {
+        return pins.i2cReadBuffer(address, 5)
+    }
+
+    /**
+     * Set I2C address for sensor
+     */
+    //% block="S16 I2C 5C Line Tracking | set I2C address to $address"
+    //% weight=20
+    //% group="Setup"
+    export function setI2CAddress(address: I2CAddress): void {
+
+        basic.pause(5)
+
+        let buf = pins.createBuffer(4)
+
+        buf[0] = 1
+        buf[1] = 0
+        buf[2] = 0
+        buf[3] = address
+
+        pins.i2cWriteBuffer(currentAddress, buf)
+
+        currentAddress = address
     }
 
     /**
      * Read analog value from sensor
      */
-    //% block="read analog value at $port"
+    //% block="S16 I2C 5C Line Tracking | get $port value at address $address"
     //% weight=10
     //% group="Analog Value"
-    export function readAnalogValue(port: SensorPort): number {
+    export function readAnalogValue(
+        port: SensorPort,
+        address: I2CAddress
+    ): number {
 
-        let buf = readBuffer()
+        let buf = readBuffer(address)
 
         return buf[port]
     }
@@ -2686,12 +2728,15 @@ namespace LineTracker {
     /**
      * Detect line
      */
-    //% block="detect line at $port"
+    //% block="S16 I2C 5C Line Tracking | detect line at $port from address $address"
     //% weight=9
     //% group="Digital Value"
-    export function detectLine(port: SensorPort): boolean {
+    export function detectLine(
+        port: SensorPort,
+        address: I2CAddress
+    ): boolean {
 
-        let buf = readBuffer()
+        let buf = readBuffer(address)
 
         return buf[port] < 200
     }
