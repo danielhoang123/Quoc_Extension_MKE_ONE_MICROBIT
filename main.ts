@@ -2690,7 +2690,7 @@ namespace LineTracker {
     /**
      * Set I2C address for sensor
      */
-    //% block="S16 I2C 5C Line Tracking | set I2C address to $address"
+    //% block="S16 I2C 5C Line Tracking \\| set I2C address to $address"
     //% weight=20
     //% group="Setup"
     export function setI2CAddress(address: I2CAddress): void {
@@ -2712,7 +2712,7 @@ namespace LineTracker {
     /**
      * Read analog value from sensor
      */
-    //% block="S16 I2C 5C Line Tracking | get $port value at address $address"
+    //% block="S16 I2C 5C Line Tracking \\| get $port value at address $address"
     //% weight=10
     //% group="Analog Value"
     export function readAnalogValue(
@@ -2728,7 +2728,7 @@ namespace LineTracker {
     /**
      * Detect line
      */
-    //% block="S16 I2C 5C Line Tracking | detect line at $port from address $address"
+    //% block="S16 I2C 5C Line Tracking \\| detect line at $port from address $address"
     //% weight=9
     //% group="Digital Value"
     export function detectLine(
