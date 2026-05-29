@@ -47,5 +47,50 @@ basic.forever(function () {
         basic.showString("5")
 
     }
+
+    if (mkeS0016LineTracker.detectLine(
+        mkeS0016LineTracker.SensorPort.P1,
+        mkeS0016LineTracker.I2CAddress.ADDR_2B
+    )) {
+
+        basic.showString("6")
+
+    }
+
+    if (mkeS0016LineTracker.detectLine(
+        mkeS0016LineTracker.SensorPort.P2,
+        mkeS0016LineTracker.I2CAddress.ADDR_2B
+    )) {
+
+        basic.showString("7")
+
+    }
+
+    if (mkeS0016LineTracker.detectLine(
+        mkeS0016LineTracker.SensorPort.P3,
+        mkeS0016LineTracker.I2CAddress.ADDR_2B
+    )) {
+
+        basic.showString("8")
+
+    }
+
+    if (mkeS0016LineTracker.detectLine(
+        mkeS0016LineTracker.SensorPort.P4,
+        mkeS0016LineTracker.I2CAddress.ADDR_2B
+    )) {
+
+        basic.showString("9")
+
+    }
+
+    if (mkeS0016LineTracker.detectLine(
+        mkeS0016LineTracker.SensorPort.P5,
+        mkeS0016LineTracker.I2CAddress.ADDR_2B
+    )) {
+
+        basic.showString("0")
+
+    }
 })
 
