@@ -2648,8 +2648,8 @@ namespace ir1838 {
 }
 
 //% color="#41C0B5" weight=5 icon="\uf06e" block="S16"
-//% groups="['Setup', 'Digital Value', 'Analog Value']"
-namespace LineTracker {
+//% groups="['Digital Value', 'Analog Value']"
+namespace mkeS0016LineTracker {
 
     export enum SensorPort {
         //% block="P1"
@@ -2681,33 +2681,35 @@ namespace LineTracker {
         ADDR_2E = 0x2E
     }
 
-    let currentAddress = I2CAddress.ADDR_2A
+    let lastReadTime: number[] = [0, 0, 0, 0, 0]
+    let cachedBuffers: Buffer[] = []
+
+    function addressToIndex(address: I2CAddress): number {
+        return address - 0x2A
+    }
 
     function readBuffer(address: I2CAddress): Buffer {
-        return pins.i2cReadBuffer(address, 5)
+
+        let index = addressToIndex(address)
+        let now = input.runningTime()
+
+        if (
+            !cachedBuffers[index] ||
+            now - lastReadTime[index] >= 10
+        ) {
+
+            cachedBuffers[index] =
+                pins.i2cReadBuffer(address, 6)
+
+            lastReadTime[index] = now
+        }
+
+        return cachedBuffers[index]
     }
 
-    /**
-     * Set I2C address for sensor
-     */
-    //% block="S16 I2C 5C Line Tracking │ Set I2C address to $address"
-    //% weight=20
-    //% group="Setup"
-    export function setI2CAddress(address: I2CAddress): void {
-
-        basic.pause(5)
-
-        let buf = pins.createBuffer(4)
-
-        buf[0] = 1
-        buf[1] = 0
-        buf[2] = 0
-        buf[3] = address
-
-        pins.i2cWriteBuffer(currentAddress, buf)
-
-        currentAddress = address
-    }
+    // function readBuffer(address: I2CAddress): Buffer {
+    //     return pins.i2cReadBuffer(address, 6)
+    // }
 
     /**
      * Read analog value from sensor
@@ -2738,6 +2740,8 @@ namespace LineTracker {
 
         let buf = readBuffer(address)
 
-        return buf[port] < 200
+        let digitalState = buf[5]
+
+        return ((digitalState >> port) & 0x01) == 0
     }
 }
